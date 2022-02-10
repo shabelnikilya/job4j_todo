@@ -1,0 +1,39 @@
+.bot3 {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0));
+    background-size: 40px 40px;
+    border-radius: 4px;
+    background-color: #3ca9c4;
+    display: block;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    color: #FFFFFF;
+    height: 35px;
+    text-align: center;
+    transition: width 0.6s ease 0s;
+    width: 160px;
+    font:bold 16px arial;
+    line-height: 35px;
+    margin:20px auto;
+    text-decoration:none;
+    animation: 2s linear 0s normal none infinite progress-bar-stripes;
+}
+
+.bot3:hover,.bot3:focus{
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+}
+@-moz-keyframes progress-bar-stripes {
+    0% {
+        background-position: 40px 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+@-moz-keyframes progress-bar-stripes {
+    0% {
+        background-position: 40px 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}

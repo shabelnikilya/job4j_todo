@@ -4,4 +4,46 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+  <servlet>
+    <servlet-name>IndexServlet</servlet-name>
+    <servlet-class>ru.job4j.servlet.IndexServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ListServlet</servlet-name>
+    <servlet-class>ru.job4j.servlets.ListServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddItemServlet</servlet-name>
+    <servlet-class>ru.job4j.servlets.AddItemServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>FilterItemsServlet</servlet-name>
+    <servlet-class>ru.job4j.servlets.FilterItemsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UpdateStatusServlet</servlet-name>
+    <servlet-class>ru.job4j.servlets.UpdateStatusServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>IndexServlet</servlet-name>
+    <url-pattern>/index</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ListServlet</servlet-name>
+    <url-pattern>/list</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddItemServlet</servlet-name>
+    <url-pattern>/addItem</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FilterItemsServlet</servlet-name>
+    <url-pattern>/filterItem</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateStatusServlet</servlet-name>
+    <url-pattern>/updateStatus</url-pattern>
+  </servlet-mapping>
 </web-app>
