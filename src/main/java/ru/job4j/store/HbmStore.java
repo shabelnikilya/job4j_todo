@@ -6,6 +6,7 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.job4j.model.Item;
@@ -39,10 +40,14 @@ public class HbmStore implements Store, AutoCloseable {
 
     @Override
     public Collection<Item> findFilterItems(boolean isDone) {
-        return this.tx(session ->
-                session.createQuery(
-                        "from ru.job4j.model.Item where done = " + isDone).list()
-                );
+        return this.tx(session -> {
+                            Query query = session.createQuery(
+                                    "from ru.job4j.model.Item where done =:param"
+                                    );
+                            query.setParameter("param", isDone);
+                            return query.list();
+                            }
+                    );
     }
 
     @Override
@@ -70,6 +75,14 @@ public class HbmStore implements Store, AutoCloseable {
     @Override
     public Item findItemById(int id) {
         return this.tx(session -> session.get(Item.class, id));
+    }
+
+    @Override
+    public Item changeStatusAndUpdate(int id) {
+        Item item = findItemById(id);
+        item.setDone(!item.isDone());
+        updateItem(id, item);
+        return item;
     }
 
     @Override

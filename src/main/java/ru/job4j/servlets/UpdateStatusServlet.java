@@ -19,15 +19,13 @@ public class UpdateStatusServlet extends HttpServlet {
     private static final Gson GSON = new GsonBuilder()
             .registerTypeAdapter(LocalDateTime.class, new SerializerLocalDateTime())
             .create();
-    private static final Store STORE = HbmStore.instance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("UTF-8");
         int id = Integer.parseInt(req.getParameter("id"));
-        Item item = STORE.findItemById(id);
-        item.setDone(!item.isDone());
-        STORE.updateItem(id, item);
+        Store store = HbmStore.instance();
+        Item item = store.changeStatusAndUpdate(id);
         OutputStream output = resp.getOutputStream();
         String json = GSON.toJson(item);
         output.write(json.getBytes(StandardCharsets.UTF_8));

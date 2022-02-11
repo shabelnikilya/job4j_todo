@@ -12,6 +12,8 @@ public interface Store {
 
     Item findItemById(int id);
 
+    Item changeStatusAndUpdate(int id);
+
     void addItem(Item item);
 
     void removeItem(int id);
