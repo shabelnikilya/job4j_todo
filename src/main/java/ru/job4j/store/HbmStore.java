@@ -10,6 +10,7 @@ import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.job4j.model.Item;
+import ru.job4j.model.User;
 
 import java.util.Collection;
 import java.util.function.Consumer;
@@ -83,6 +84,27 @@ public class HbmStore implements Store, AutoCloseable {
         item.setDone(!item.isDone());
         updateItem(id, item);
         return item;
+    }
+
+    @Override
+    public void saveUser(User user) {
+        this.makeTransaction(session -> session.save(user));
+    }
+
+    @Override
+    public User findUserById(int id) {
+        return this.tx(session -> session.get(User.class, id));
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+        return this.tx(session -> {
+            Query query = session.createQuery(
+                    "from ru.job4j.model.User where email =:param"
+            );
+            query.setParameter("param", email);
+            return (User) query.uniqueResult();
+        });
     }
 
     @Override

@@ -7,12 +7,16 @@ import java.util.Objects;
 @Entity
 @Table(name = "items")
 public class Item {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String description;
     private LocalDateTime created;
     private boolean done;
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private User user;
 
     public Item() {
     }
@@ -23,9 +27,13 @@ public class Item {
     }
 
     public Item(String description, LocalDateTime created, boolean done) {
-        this.description = description;
+        this(description, done);
         this.created = created;
-        this.done = done;
+    }
+
+    public Item(String description, LocalDateTime created, boolean done, User user) {
+        this(description, created, done);
+        this.user = user;
     }
 
     public int getId() {
@@ -58,6 +66,14 @@ public class Item {
 
     public void setDone(boolean done) {
         this.done = done;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

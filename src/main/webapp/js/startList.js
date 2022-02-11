@@ -9,6 +9,7 @@ $(document).ready(function() {
             $('#items').append(
                 `<tr>
                                     <th>${item.description}</th>
+                                    <th style="text-align:center">${item.user.email}</th>
                                     <th style="text-align:center">${item.created}</th>
                                     <th style="text-align:center">
                                     <button type="submit" class="btn" id="${item.id}" onclick="update(${item.id});">${done}</th>

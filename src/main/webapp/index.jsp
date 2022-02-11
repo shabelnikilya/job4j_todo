@@ -27,9 +27,25 @@
     <script type="text/javascript" src="js/startList.js"></script>
     <script type="text/javascript" src="js/update.js"></script>
     <script type="text/javascript" src="js/valid.js"></script>
-
+</head>
 <body>
 <h1 align="center" style="font-style:oblique">Список TODO</h1>
+    <div style="position:absolute; right:200px">
+        <c:if test="${user != null}">
+            <div style="display: inline-block">
+                <a href="<%=request.getContextPath()%>/login.jsp" style="color: black; font-size: 140%">
+                    <c:out value="${user.firstName}"/>
+                </a>
+                <a href="<%=request.getContextPath()%>/logout" style="color: black; font-size: 140%">
+                    Выйти
+                </a>
+            </div>
+        </c:if>
+        <c:if test="${user == null}">
+            <a style="font-size: 140%; color: black" href="<%=request.getContextPath()%>/auth.jsp">Войти</a>
+        </c:if>
+    </div>
+
     <details>
         <summary>Добавить задачу</summary>
         <p style="font-size: 130%" align="center">Заполните поле 'Описание' для добавления задачи</p>
@@ -39,7 +55,7 @@
                         title="Заполните поле - Описание, если хотите добавить задачу" class="form-control"
                         name="description" style="width: 70%">
                 </div>
-                <button type="submit" class="bot3" onclick="return sendItem()">Добавить</button>
+                <button type="submit" class="bot3" onclick="return sendItem(<c:out value="${empty user}"/>)">Добавить</button>
             </form>
     </details>
     <div class="checkbox" style="position:absolute; right:180px; font-size: 120%; color: black">
@@ -49,9 +65,10 @@
     <br><table align="center">
         <thead>
             <tr>
-                <th width="50%" style="text-align:center">Описание</th>
-                <th width="30%" style="text-align:center">Дата</th>
-                <th width="20%" style="text-align:center">Отметка о выполнении</th>
+                <th width="40%" style="text-align:center">Описание</th>
+                <th width="30%" style="text-align:center">Пользователь</th>
+                <th width="15%" style="text-align:center">Дата</th>
+                <th width="15%" style="text-align:center">Отметка о выполнении</th>
             </tr>
         </thead>
         <tbody id="items">

@@ -25,6 +25,18 @@
     <servlet-name>UpdateStatusServlet</servlet-name>
     <servlet-class>ru.job4j.servlets.UpdateStatusServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AuthServlet</servlet-name>
+    <servlet-class>ru.job4j.servlets.AuthServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SaveUserServlet</servlet-name>
+    <servlet-class>ru.job4j.servlets.SaveUserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>ru.job4j.servlets.LogoutServlet</servlet-class>
+  </servlet>
 
   <servlet-mapping>
     <servlet-name>IndexServlet</servlet-name>
@@ -45,5 +57,17 @@
   <servlet-mapping>
     <servlet-name>UpdateStatusServlet</servlet-name>
     <url-pattern>/updateStatus</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AuthServlet</servlet-name>
+    <url-pattern>/auth</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SaveUserServlet</servlet-name>
+    <url-pattern>/saveUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
   </servlet-mapping>
 </web-app>
