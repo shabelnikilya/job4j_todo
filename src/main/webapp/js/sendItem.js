@@ -15,8 +15,8 @@ function sendItem(user) {
                                     <th>${data.description}</th>
                                     <th style="text-align:center">${data.user.email}</th>
                                     <th style="text-align:center">${data.created}</th>
-                                    <th style="text-align:center">
-                                    <button type="submit" class="btn" id="${data.id}" onclick="update(${data.id});">&#10008</th>
+                                    <th style="text-align:center" id="${data.id}">
+                                    <button type="submit" class="btn" onclick="update(${data.id}, ${data.done});">&#10008</th>
                                     </tr>`)
     }).fail(function (err) {
         console.log(err);

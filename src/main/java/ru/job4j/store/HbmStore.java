@@ -79,11 +79,15 @@ public class HbmStore implements Store, AutoCloseable {
     }
 
     @Override
-    public Item changeStatusAndUpdate(int id) {
-        Item item = findItemById(id);
-        item.setDone(!item.isDone());
-        updateItem(id, item);
-        return item;
+    public void changeStatusAndUpdate(int id, boolean isDone) {
+        this.makeTransaction(session -> {
+            Query query = session.createQuery(
+                    "update ru.job4j.model.Item set done = :bool where id = :param"
+            );
+            query.setParameter("bool", !isDone);
+            query.setParameter("param", id);
+            query.executeUpdate();
+        });
     }
 
     @Override

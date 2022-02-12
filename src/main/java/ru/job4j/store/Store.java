@@ -13,7 +13,7 @@ public interface Store {
 
     Item findItemById(int id);
 
-    Item changeStatusAndUpdate(int id);
+    void changeStatusAndUpdate(int id, boolean done);
 
     void addItem(Item item);
 
