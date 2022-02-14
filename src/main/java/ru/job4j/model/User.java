@@ -2,6 +2,7 @@ package ru.job4j.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -14,18 +15,17 @@ public class User {
     private String secondName;
     private String email;
     private String password;
-    private LocalDateTime registration;
+    private Date registration = new Date(System.currentTimeMillis());
 
     public User() {
     }
 
     public User(String firstName, String secondName,
-                String email, String password, LocalDateTime registration) {
+                String email, String password) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.email = email;
         this.password = password;
-        this.registration = registration;
     }
 
     public int getId() {
@@ -68,11 +68,11 @@ public class User {
         this.password = password;
     }
 
-    public LocalDateTime getRegistration() {
+    public Date getRegistration() {
         return registration;
     }
 
-    public void setRegistration(LocalDateTime registration) {
+    public void setRegistration(Date registration) {
         this.registration = registration;
     }
 

@@ -2,6 +2,7 @@ package ru.job4j.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -14,7 +15,8 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String description;
-    private LocalDateTime created;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created = new Date(System.currentTimeMillis());
     private boolean done;
 
     @ManyToOne
@@ -32,20 +34,14 @@ public class Item {
         this.done = done;
     }
 
-    public Item(String description, LocalDateTime created, boolean done) {
+    public Item(String description, boolean done, User user) {
         this(description, done);
-        this.created = created;
-    }
-
-    public Item(String description, LocalDateTime created, boolean done, User user) {
-        this(description, created, done);
         this.user = user;
     }
 
-    public Item(String description, LocalDateTime created, boolean done, User user,
+    public Item(String description, boolean done, User user,
                 Set<Category> categories) {
         this.description = description;
-        this.created = created;
         this.done = done;
         this.user = user;
         this.categories = categories;
@@ -67,11 +63,11 @@ public class Item {
         this.description = description;
     }
 
-    public LocalDateTime getCreated() {
+    public Date getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDateTime created) {
+    public void setCreated(Date created) {
         this.created = created;
     }
 

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.LocalDateTime;
 
 public class SaveUserServlet extends HttpServlet {
 
@@ -23,7 +22,7 @@ public class SaveUserServlet extends HttpServlet {
         String password = req.getParameter("password");
         Store store = HbmStore.instance();
         if (store.findUserByEmail(email) == null) {
-            store.saveUser(new User(name, secondName, email, password, LocalDateTime.now()));
+            store.saveUser(new User(name, secondName, email, password));
             req.getRequestDispatcher("index.jsp").forward(req, resp);
         } else {
             req.setAttribute("error", "Пользователь с данной почтой уже зарегестрирован!");
