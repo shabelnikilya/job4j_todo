@@ -23,10 +23,10 @@ public class AddItemServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String desc = req.getParameter("description");
+        String[] ids = req.getParameterValues("ids[]");
         User user = (User) req.getSession().getAttribute("user");
         Item item = new Item(desc, LocalDateTime.now(), false, user);
-        HbmStore.instance().addItem(item);
-
+        HbmStore.instance().addItem(item, ids);
         String json = GSON.toJson(item);
         resp.setContentType("application/json; charset=utf-8");
         OutputStream output = resp.getOutputStream();

@@ -37,6 +37,10 @@
     <servlet-name>LogoutServlet</servlet-name>
     <servlet-class>ru.job4j.servlets.LogoutServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AllCategoriesServlet</servlet-name>
+    <servlet-class>ru.job4j.servlets.AllCategoriesServlet</servlet-class>
+  </servlet>
 
   <servlet-mapping>
     <servlet-name>IndexServlet</servlet-name>
@@ -69,5 +73,9 @@
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AllCategoriesServlet</servlet-name>
+    <url-pattern>/allCategories</url-pattern>
   </servlet-mapping>
 </web-app>

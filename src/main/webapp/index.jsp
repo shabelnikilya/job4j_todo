@@ -27,6 +27,7 @@
     <script type="text/javascript" src="js/startList.js"></script>
     <script type="text/javascript" src="js/update.js"></script>
     <script type="text/javascript" src="js/valid.js"></script>
+    <script type="text/javascript" src="js/startCategories.js"></script>
 </head>
 <body>
 <h1 align="center" style="font-style:oblique">Список TODO</h1>
@@ -48,12 +49,16 @@
 
     <details>
         <summary>Добавить задачу</summary>
-        <p style="font-size: 130%" align="center">Заполните поле 'Описание' для добавления задачи</p>
-            <form id="form" method="post" >
+        <p style="font-size: 130%" align="center">Заполните поле и выберете категории для добавления задачи</p>
+            <form id="form" method="post">
                 <div class="form-group" align="center">
                     <input type="text" placeholder="Описание" id="descriptionItem"
                         title="Заполните поле - Описание, если хотите добавить задачу" class="form-control"
                         name="description" style="width: 70%">
+                </div>
+                <div style="margin: 0 auto; width: 20%">
+                        <select class="custom-select" id="catIds" name="catIds" title="Выберете как минимум одну категоррию!" multiple>
+                        </select>
                 </div>
                 <button type="submit" class="bot3" onclick="return sendItem(<c:out value="${empty user}"/>)">Добавить</button>
             </form>
@@ -65,8 +70,9 @@
     <br><table align="center">
         <thead>
             <tr>
-                <th width="40%" style="text-align:center">Описание</th>
-                <th width="30%" style="text-align:center">Пользователь</th>
+                <th width="30%" style="text-align:center">Описание</th>
+                <th width="20%" style="text-align:center">Пользователь</th>
+                <th width="20%" style="text-align:center">Категории</th>
                 <th width="15%" style="text-align:center">Дата</th>
                 <th width="15%" style="text-align:center">Отметка о выполнении</th>
             </tr>
