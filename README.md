@@ -9,3 +9,4 @@
 ![ScreenShot](images/3.jpg)
 ![ScreenShot](images/4.jpg)
 ![ScreenShot](images/5.jpg)
+<br><strong>Контакты:</strong> Telegram @ilya_hollow
